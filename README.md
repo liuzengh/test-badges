@@ -80,6 +80,6 @@ GitHub 本身的流水线 workflow-action.
 
 ## Coverage
 
-todo
+参考这个网站 https://docs.codecov.com/docs
 
-参考这个网站 https://docs.codecov.com/docs 
+[![Coverage](https://codecov.io/gh/liuzengh/test-badges/branch/main/graph/badge.svg)](https://app.codecov.io/gh/liuzengh/test-badges/tree/main)
