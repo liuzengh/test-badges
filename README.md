@@ -80,6 +80,6 @@ GitHub 本身的流水线 workflow-action.
 
 ## Coverage
 
-参考这个网站 https://docs.codecov.com/docs
+参考这个网站 https://docs.codecov.com/docs 需要更新 workflows下面的 action 在 执行测试后上传测试报告到 codecov 平台。
 
 [![Coverage](https://codecov.io/gh/liuzengh/test-badges/branch/main/graph/badge.svg)](https://app.codecov.io/gh/liuzengh/test-badges/tree/main)
