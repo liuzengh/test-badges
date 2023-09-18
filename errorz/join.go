@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package errors
+package errorz
 
-// Join returns an error that wraps the given errors.
+// Join returns an error that wraps the given errorz.
 // Any nil error values are discarded.
 // Join returns nil if every value in errs is nil.
 // The error formats as the concatenation of the strings obtained

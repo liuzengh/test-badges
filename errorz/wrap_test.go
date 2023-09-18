@@ -2,23 +2,24 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package errors_test
+package errorz_test
 
 import (
-	"errors"
 	"fmt"
 	"io/fs"
 	"os"
 	"reflect"
 	"testing"
+
+	"github.com/liuzengh/test-badges/errorz"
 )
 
 func TestIs(t *testing.T) {
-	err1 := errors.New("1")
+	err1 := errorz.New("1")
 	erra := wrapped{"wrap 2", err1}
 	errb := wrapped{"wrap 3", erra}
 
-	err3 := errors.New("3")
+	err3 := errorz.New("3")
 
 	poser := &poser{"either 1 or 3", func(err error) bool {
 		return err == err1 || err == err3
@@ -50,7 +51,7 @@ func TestIs(t *testing.T) {
 		{multiErr{}, err1, false},
 		{multiErr{err1, err3}, err1, true},
 		{multiErr{err3, err1}, err1, true},
-		{multiErr{err1, err3}, errors.New("x"), false},
+		{multiErr{err1, err3}, errorz.New("x"), false},
 		{multiErr{err3, errb}, errb, true},
 		{multiErr{err3, errb}, erra, true},
 		{multiErr{err3, errb}, err1, true},
@@ -61,7 +62,7 @@ func TestIs(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run("", func(t *testing.T) {
-			if got := errors.Is(tc.err, tc.target); got != tc.match {
+			if got := errorz.Is(tc.err, tc.target); got != tc.match {
 				t.Errorf("Is(%v, %v) = %v, want %v", tc.err, tc.target, got, tc.match)
 			}
 		})
@@ -145,7 +146,7 @@ func TestAs(t *testing.T) {
 		true,
 		poserErr,
 	}, {
-		errors.New("err"),
+		errorz.New("err"),
 		&timeout,
 		false,
 		nil,
@@ -165,12 +166,12 @@ func TestAs(t *testing.T) {
 		false,
 		nil,
 	}, {
-		multiErr{errors.New("a"), errorT{"T"}},
+		multiErr{errorz.New("a"), errorT{"T"}},
 		&errT,
 		true,
 		errorT{"T"},
 	}, {
-		multiErr{errorT{"T"}, errors.New("a")},
+		multiErr{errorT{"T"}, errorz.New("a")},
 		&errT,
 		true,
 		errorT{"T"},
@@ -180,7 +181,7 @@ func TestAs(t *testing.T) {
 		true,
 		errorT{"a"},
 	}, {
-		multiErr{multiErr{errors.New("a"), errorT{"a"}}, errorT{"b"}},
+		multiErr{multiErr{errorz.New("a"), errorT{"a"}}, errorT{"b"}},
 		&errT,
 		true,
 		errorT{"a"},
@@ -201,7 +202,7 @@ func TestAs(t *testing.T) {
 		rtarget := reflect.ValueOf(tc.target)
 		rtarget.Elem().Set(reflect.Zero(reflect.TypeOf(tc.target).Elem()))
 		t.Run(name, func(t *testing.T) {
-			match := errors.As(tc.err, tc.target)
+			match := errorz.As(tc.err, tc.target)
 			if match != tc.match {
 				t.Fatalf("match: got %v; want %v", match, tc.match)
 			}
@@ -223,13 +224,13 @@ func TestAsValidation(t *testing.T) {
 		"error",
 		&s,
 	}
-	err := errors.New("error")
+	err := errorz.New("error")
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf("%T(%v)", tc, tc), func(t *testing.T) {
 			defer func() {
 				recover()
 			}()
-			if errors.As(err, tc) {
+			if errorz.As(err, tc) {
 				t.Errorf("As(err, %T(%v)) = true, want false", tc, tc)
 				return
 			}
@@ -239,7 +240,7 @@ func TestAsValidation(t *testing.T) {
 }
 
 func TestUnwrap(t *testing.T) {
-	err1 := errors.New("1")
+	err1 := errorz.New("1")
 	erra := wrapped{"wrap 2", err1}
 
 	testCases := []struct {
@@ -253,7 +254,7 @@ func TestUnwrap(t *testing.T) {
 		{wrapped{"wrap 3", erra}, erra},
 	}
 	for _, tc := range testCases {
-		if got := errors.Unwrap(tc.err); got != tc.want {
+		if got := errorz.Unwrap(tc.err); got != tc.want {
 			t.Errorf("Unwrap(%v) = %v, want %v", tc.err, got, tc.want)
 		}
 	}

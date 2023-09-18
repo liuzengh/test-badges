@@ -2,14 +2,15 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package errors_test
+package errorz_test
 
 import (
-	"errors"
 	"fmt"
 	"io/fs"
 	"os"
 	"time"
+
+	"github.com/liuzengh/test-badges/errorz"
 )
 
 // MyError is an error implementation that includes a time and message.
@@ -37,7 +38,7 @@ func Example() {
 }
 
 func ExampleNew() {
-	err := errors.New("emit macho dwarf: elf header corrupted")
+	err := errorz.New("emit macho dwarf: elf header corrupted")
 	if err != nil {
 		fmt.Print(err)
 	}
@@ -56,14 +57,14 @@ func ExampleNew_errorf() {
 }
 
 func ExampleJoin() {
-	err1 := errors.New("err1")
-	err2 := errors.New("err2")
-	err := errors.Join(err1, err2)
+	err1 := errorz.New("err1")
+	err2 := errorz.New("err2")
+	err := errorz.Join(err1, err2)
 	fmt.Println(err)
-	if errors.Is(err, err1) {
+	if errorz.Is(err, err1) {
 		fmt.Println("err is err1")
 	}
-	if errors.Is(err, err2) {
+	if errorz.Is(err, err2) {
 		fmt.Println("err is err2")
 	}
 	// Output:
@@ -75,7 +76,7 @@ func ExampleJoin() {
 
 func ExampleIs() {
 	if _, err := os.Open("non-existing"); err != nil {
-		if errors.Is(err, fs.ErrNotExist) {
+		if errorz.Is(err, fs.ErrNotExist) {
 			fmt.Println("file does not exist")
 		} else {
 			fmt.Println(err)
@@ -89,7 +90,7 @@ func ExampleIs() {
 func ExampleAs() {
 	if _, err := os.Open("non-existing"); err != nil {
 		var pathError *fs.PathError
-		if errors.As(err, &pathError) {
+		if errorz.As(err, &pathError) {
 			fmt.Println("Failed at path:", pathError.Path)
 		} else {
 			fmt.Println(err)
@@ -101,10 +102,10 @@ func ExampleAs() {
 }
 
 func ExampleUnwrap() {
-	err1 := errors.New("error1")
+	err1 := errorz.New("error1")
 	err2 := fmt.Errorf("error2: [%w]", err1)
 	fmt.Println(err2)
-	fmt.Println(errors.Unwrap(err2))
+	fmt.Println(errorz.Unwrap(err2))
 	// Output
 	// error2: [error1]
 	// error1

@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// Package errors implements functions to manipulate errors.
+// Package errorz implements functions to manipulate errorz.
 //
-// The [New] function creates errors whose only content is a text message.
+// The [New] function creates errorz whose only content is a text message.
 //
 // An error e wraps another error if e's type has one of the methods
 //
@@ -16,7 +16,7 @@
 // indicates that e does not wrap any error. It is invalid for an
 // Unwrap method to return an []error containing a nil error value.
 //
-// An easy way to create wrapped errors is to call [fmt.Errorf] and apply
+// An easy way to create wrapped errorz is to call [fmt.Errorf] and apply
 // the %w verb to the error argument:
 //
 //	wrapsErr := fmt.Errorf("... %w ...", ..., err, ...)
@@ -30,7 +30,7 @@
 // matches the second. It reports whether it finds a match. It should be
 // used in preference to simple equality checks:
 //
-//	if errors.Is(err, fs.ErrExist)
+//	if errorz.Is(err, fs.ErrExist)
 //
 // is preferable to
 //
@@ -43,7 +43,7 @@
 // performs the assignment and returns true. Otherwise, it returns false. The form
 //
 //	var perr *fs.PathError
-//	if errors.As(err, &perr) {
+//	if errorz.As(err, &perr) {
 //		fmt.Println(perr.Path)
 //	}
 //
@@ -54,20 +54,20 @@
 //	}
 //
 // because the former will succeed if err wraps an [*io/fs.PathError].
-package errors
+package errorz
 
 // New returns an error that formats as the given text.
 // Each call to New returns a distinct error value even if the text is identical.
 func New(text string) error {
-	return &errorString{text}
+	return &errorztring{text}
 }
 
-// errorString is a trivial implementation of error.
-type errorString struct {
+// errorztring is a trivial implementation of error.
+type errorztring struct {
 	s string
 }
 
-func (e *errorString) Error() string {
+func (e *errorztring) Error() string {
 	return e.s
 }
 
@@ -78,7 +78,7 @@ func (e *errorString) Error() string {
 // Functions and methods should not return this error but should instead
 // return an error including appropriate context that satisfies
 //
-//	errors.Is(err, errors.ErrUnsupported)
+//	errorz.Is(err, errorz.ErrUnsupported)
 //
 // either by directly wrapping ErrUnsupported or by implementing an Is method.
 //

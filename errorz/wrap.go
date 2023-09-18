@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package errors
+package errorz
 
 import "reflect"
 
@@ -11,7 +11,7 @@ import "reflect"
 // Otherwise, Unwrap returns nil.
 //
 // Unwrap only calls a method of the form "Unwrap() error".
-// In particular Unwrap does not unwrap errors returned by [Join].
+// In particular Unwrap does not unwrap errorz returned by [Join].
 func Unwrap(err error) error {
 	u, ok := err.(interface {
 		Unwrap() error
@@ -24,8 +24,8 @@ func Unwrap(err error) error {
 
 // Is reports whether any error in err's tree matches target.
 //
-// The tree consists of err itself, followed by the errors obtained by repeatedly
-// calling Unwrap. When err wraps multiple errors, Is examines err followed by a
+// The tree consists of err itself, followed by the errorz obtained by repeatedly
+// calling Unwrap. When err wraps multiple errorz, Is examines err followed by a
 // depth-first traversal of its children.
 //
 // An error is considered to match a target if it is equal to that target or if
@@ -74,8 +74,8 @@ func Is(err, target error) bool {
 // As finds the first error in err's tree that matches target, and if one is found, sets
 // target to that error value and returns true. Otherwise, it returns false.
 //
-// The tree consists of err itself, followed by the errors obtained by repeatedly
-// calling Unwrap. When err wraps multiple errors, As examines err followed by a
+// The tree consists of err itself, followed by the errorz obtained by repeatedly
+// calling Unwrap. When err wraps multiple errorz, As examines err followed by a
 // depth-first traversal of its children.
 //
 // An error matches target if the error's concrete value is assignable to the value
@@ -93,16 +93,16 @@ func As(err error, target any) bool {
 		return false
 	}
 	if target == nil {
-		panic("errors: target cannot be nil")
+		panic("errorz: target cannot be nil")
 	}
 	val := reflect.ValueOf(target)
 	typ := val.Type()
 	if typ.Kind() != reflect.Ptr || val.IsNil() {
-		panic("errors: target must be a non-nil pointer")
+		panic("errorz: target must be a non-nil pointer")
 	}
 	targetType := typ.Elem()
 	if targetType.Kind() != reflect.Interface && !targetType.Implements(errorType) {
-		panic("errors: *target must be interface or implement error")
+		panic("errorz: *target must be interface or implement error")
 	}
 	for {
 		if reflect.TypeOf(err).AssignableTo(targetType) {
