@@ -274,10 +274,10 @@ func (e wrapped) Unwrap() error { return e.err }
 type multiErr []error
 
 func (m multiErr) Error() string   { return "multiError" }
-func (m multiErr) Unwrap() []error { return []error(m) }
+func (m multiErr) Unwrap() []error { return m }
 
 type errorUncomparable struct {
-	f []string
+	f []string // nolint: unused
 }
 
 func (errorUncomparable) Error() string {
