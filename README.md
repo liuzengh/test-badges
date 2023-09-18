@@ -5,4 +5,4 @@
 
 ![etcd-badges](etcd-badges.png)
 
-本代码仓库展示如何为一个开源仓库添加各种徽章。
+本代码仓库展示如何为一个开源仓库添加各种徽章，本仓库的 errors 包的代码拷贝自 [go1.21.0 的 error 包](https://cs.opensource.google/go/go/+/refs/tags/go1.20:src/errors/)。
