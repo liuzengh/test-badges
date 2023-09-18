@@ -1,10 +1,12 @@
 # test-badges
+
 [![Go Reference](https://pkg.go.dev/badge/github.com/liuzengh/test-badges.svg)](https://pkg.go.dev/github.com/liuzengh/test-badges)
 [![Go Report Card](https://goreportcard.com/badge/github.com/liuzengh/test-badges)](https://goreportcard.com/report/github.com/liuzengh/test-badges)
 [![LICENSE](https://img.shields.io/badge/license-BSD--3--Clause-green)](https://github.com/liuzengh/test-badges/blob/main/LICENSE)
 [![Releases](https://img.shields.io/github/release/liuzengh/test-badges.svg?style=flat-square)](https://github.com/liuzengh/test-badges/releases)
 [![Docs](https://img.shields.io/badge/docs-latest-green)](https://github.com/liuzengh/test-badges)
 [![Tests](https://github.com/liuzengh/test-badges/actions/workflows/tests.yaml/badge.svg)](https://github.com/liuzengh/test-badges/actions/workflows/tests.yaml)
+[![Coverage](https://codecov.io/gh/liuzengh/test-badges/branch/main/graph/badge.svg)](https://app.codecov.io/gh/liuzengh/test-badges/tree/main)
 
 在 GitHub 仓库中，徽章（Badges）通常用于展示项目的各种状态和信息，例如代码质量、测试覆盖率、文档链接等。它们通常以图像的形式展示，并链接到相关的服务或页面。
 例如 [etcd](https://github.com/etcd-io/etcd) 代码仓库中存在如下徽章:
@@ -77,7 +79,7 @@ GitHub 本身的流水线 workflow-action.
 [![Tests](https://github.com/liuzengh/test-badges/actions/workflows/tests.yaml/badge.svg)](https://github.com/liuzengh/test-badges/actions/workflows/tests.yaml)
 
 ## Coverage
- 
+
 todo
 
 参考这个网站 https://docs.codecov.com/docs 
