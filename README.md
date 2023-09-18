@@ -1,8 +1,10 @@
 # test-badges
+[![Go Reference](https://pkg.go.dev/badge/github.com/liuzengh/test-badges.svg)](https://pkg.go.dev/github.com/liuzengh/test-badges)
 [![Go Report Card](https://goreportcard.com/badge/github.com/liuzengh/test-badges)](https://goreportcard.com/report/github.com/liuzengh/test-badges)
 [![LICENSE](https://img.shields.io/badge/license-BSD--3--Clause-green)](https://github.com/liuzengh/test-badges/blob/main/LICENSE)
 [![Releases](https://img.shields.io/github/release/liuzengh/test-badges.svg?style=flat-square)](https://github.com/liuzengh/test-badges/releases)
 [![Docs](https://img.shields.io/badge/docs-latest-green)](https://github.com/liuzengh/test-badges)
+[![Tests](https://github.com/liuzengh/test-badges/actions/workflows/tests.yaml/badge.svg)](https://github.com/liuzengh/test-badges/actions/workflows/tests.yaml)
 
 在 GitHub 仓库中，徽章（Badges）通常用于展示项目的各种状态和信息，例如代码质量、测试覆盖率、文档链接等。它们通常以图像的形式展示，并链接到相关的服务或页面。
 例如 [etcd](https://github.com/etcd-io/etcd) 代码仓库中存在如下徽章:
@@ -10,6 +12,12 @@
 ![etcd-badges](etcd-badges.png)
 
 本代码仓库展示如何为一个开源仓库添加各种徽章，本仓库的 errors 包的代码拷贝自 [go1.21.0 的 error 包](https://cs.opensource.google/go/go/+/refs/tags/go1.20:src/errors/)。
+
+## Go Reference
+
+Go Reference是 https://pkg.go.dev 网站上显示的 API 文档。 可以参考：https://pkg.go.dev/about#creating-a-badge
+
+输入 `github.com/liuzengh/test-badges` 到 https://pkg.go.dev/badge/ 网站上生成徽章
 
 ## Go Report
 
@@ -62,3 +70,14 @@ go: added github.com/liuzengh/test-badges v1.0.0-alpha
 
 [![Docs](https://img.shields.io/badge/docs-latest-green)](https://github.com/liuzengh/test-badges)
 
+## Tests
+
+GitHub 本身的流水线 workflow-action.
+
+[![Tests](https://github.com/liuzengh/test-badges/actions/workflows/tests.yaml/badge.svg)](https://github.com/liuzengh/test-badges/actions/workflows/tests.yaml)
+
+## Coverage
+ 
+todo
+
+参考这个网站 https://docs.codecov.com/docs 
