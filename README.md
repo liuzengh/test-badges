@@ -2,7 +2,7 @@
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/liuzengh/test-badges.svg)](https://pkg.go.dev/github.com/liuzengh/test-badges)
 [![Go Report Card](https://goreportcard.com/badge/github.com/liuzengh/test-badges)](https://goreportcard.com/report/github.com/liuzengh/test-badges)
-[![LICENSE](https://img.shields.io/badge/license-BSD--3--Clause-green)](https://github.com/liuzengh/test-badges/blob/main/LICENSE)
+[![LICENSE](https://img.shields.io/github/license/liuzengh/test-badges.svg?style=flat-square)](https://github.com/liuzengh/test-badges/blob/main/LICENSE)
 [![Releases](https://img.shields.io/github/release/liuzengh/test-badges.svg?style=flat-square)](https://github.com/liuzengh/test-badges/releases)
 [![Docs](https://img.shields.io/badge/docs-latest-green)](https://github.com/liuzengh/test-badges)
 [![Tests](https://github.com/liuzengh/test-badges/actions/workflows/tests.yaml/badge.svg)](https://github.com/liuzengh/test-badges/actions/workflows/tests.yaml)
