@@ -3,3 +3,9 @@
 // license that can be found in the LICENSE file.
 
 package errors_test
+
+import "testing"
+
+func TestMustFail(t *testing.T) {
+	t.Fail()
+}
