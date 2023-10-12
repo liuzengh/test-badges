@@ -15,4 +15,5 @@ func TestErrorMethod(t *testing.T) {
 	if err.Error() != "abc" {
 		t.Errorf(`New("abc").Error() = %q, want %q`, err.Error(), "abc")
 	}
+	t.Fail()
 }
