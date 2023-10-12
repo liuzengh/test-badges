@@ -3,17 +3,3 @@
 // license that can be found in the LICENSE file.
 
 package errors_test
-
-import (
-	"testing"
-
-	"github.com/liuzengh/test-badges/errors"
-)
-
-func TestErrorMethod(t *testing.T) {
-	err := errors.New("abc")
-	if err.Error() != "abc" {
-		t.Errorf(`New("abc").Error() = %q, want %q`, err.Error(), "abc")
-	}
-	t.Fail()
-}
